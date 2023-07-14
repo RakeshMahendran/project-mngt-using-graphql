@@ -4,6 +4,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { GET_CLIENTS } from "../queries/clientQueries";
 import { GET_PROJECTS } from "../queries/projectQueries";
 import { ADD_PROJECT } from "../mutations/projectMutations";
+import Spinner from "./Spinner";
 
 export default function AddProjectModal() {
   const [name, setName] = useState("");
@@ -40,7 +41,7 @@ export default function AddProjectModal() {
   };
 
   if(loading){
-    return null
+    return <div><Spinner/></div>;
   }
 
   if(error){
@@ -124,12 +125,12 @@ export default function AddProjectModal() {
                     </div>
                      <div className="mb-3" >
                           <label className="form-label">Client</label>
-                          <select id="clientId" className="form-select" value={clientId} onChange={(e)=>setClientId(e.target.value)}>
+                          <select id="clientId" className="form-select" value={clientId} onChange={(e)=>setClientId(e?.target?.value)}>
                             <option value="">Select</option>
                             {
-                                data.clients.map((client)=>{
+                                data?.clients?.map((client)=>{
                                     return(
-                                        <option key={client.id} value={client.id}>{client.name}</option>
+                                        <option key={client?.id} value={client?.id}>{client?.name}</option>
                                     )
                                 })
                             }
