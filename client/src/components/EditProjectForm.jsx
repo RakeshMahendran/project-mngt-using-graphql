@@ -1,26 +1,39 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { GET_PROJECT } from "../queries/projectQueries";
-import {  UPDATE_PROJECT } from "../mutations/projectMutations";
+import { UPDATE_PROJECT } from "../mutations/projectMutations";
 
+export default function EditProjectForm({ project }) {
+  const [name, setName] = useState(project.name);
+  const [description, setDescription] = useState(project.description);
+  const [status, setStatus] = useState(() => {
+    switch (project.status) {
+      case "Not Started":
+        return "new";
+      case "In progress":
+        return "progress";
+      case "Completed":
+        return "completed";
+      default:
+        throw new Error(`Unknown status: ${project.status}`);
+    }
+  });
 
-const EditProjectForm = ({ project }) => {
-  const [name,setName] = useState(project.name)
-  const [description,setDescription] = useState(project.description)
-  const [status,setStatus] = useState('')
+  const [updateProject] = useMutation(UPDATE_PROJECT, {
+    variables: { id: project.id, name, description, status },
+    refetchQueries: [{ query: GET_PROJECT, variables: { id: project.id } }],
+  });
 
-  const [updateProject] = useMutation(UPDATE_PROJECT,{
-    variables:{id:project.id,name:name,description:description,status:status},
-    refetchQueries:[{query:GET_PROJECT, variables:{id:project.id}}],
-  })
   const onSubmit = (e) => {
-     e.preventDefault()
+    e.preventDefault();
 
-     if(!name || !description || !status){
-      return alert('Please fill all the fields')
-     }
-     updateProject(name, description,status)
-  }
+    // if (!name || !description || !status) {
+    //   return alert("Please fill out all fields");
+    // }
+
+    updateProject(name, description, status);
+  };
+
   return (
     <div className="mt-5">
       <h3>Update Project Details</h3>
@@ -52,17 +65,16 @@ const EditProjectForm = ({ project }) => {
             value={status}
             onChange={(e) => setStatus(e.target.value)}
           >
-            <option value="new">New</option>
+            <option value="new">Not Started</option>
             <option value="progress">In Progress</option>
             <option value="completed">Completed</option>
           </select>
         </div>
+
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
       </form>
-      <button type="submit" class="btn btn-primary">
-           Submit
-      </button>
     </div>
   );
-};
-
-export default EditProjectForm;
+}
