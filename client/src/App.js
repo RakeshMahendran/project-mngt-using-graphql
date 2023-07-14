@@ -27,7 +27,7 @@ const cache = new InMemoryCache({
 
 
 const client = new ApolloClient({
-  uri: process.env.SERVICE_API || "http://localhost:5000/graphql",
+  uri: process.env.SERVICE_API || "https://projectgraphql.onrender.com/graphql",
   cache: cache,
 });
 
