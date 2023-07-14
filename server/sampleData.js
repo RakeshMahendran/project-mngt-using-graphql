@@ -6,7 +6,7 @@ const projects = [
     name: "eCommerce Website",
     description:
       "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.",
-    status: "In Progress",
+    status: "In progress",
   },
   {
     id: "2",
@@ -14,7 +14,7 @@ const projects = [
     name: "Dating App",
     description:
       "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.",
-    status: "In Progress",
+    status: "In progress",
   },
   {
     id: "3",
@@ -22,7 +22,7 @@ const projects = [
     name: "SEO Project",
     description:
       "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.",
-    status: "In Progress",
+    status: "In progress",
   },
   {
     id: "4",
@@ -38,7 +38,7 @@ const projects = [
     name: "Auction Website",
     description:
       "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.",
-    status: "In Progress",
+    status: "In progress",
   },
 ];
 
